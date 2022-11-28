@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .App {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 80vw;
   height: 100vh;
+  background-color: pink;
+}
 
+.title-container {
+  width: 600px;
+  border-radius: 50%;
+  background-color: rgb(247, 111, 154);
+  opacity: 0.5;
+  text-align: center;
+  height: 150px;
+
+}
+
+header {
+  height: 200px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  line-height: 150px;
+  color: white;
 }
