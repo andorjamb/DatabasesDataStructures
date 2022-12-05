@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
+
+body {
+  margin: 0;
+ }
+
+header {
+  height: 100px;
+  width: 100vw;
+  margin: 0;
+  text-align: center;
+}
+
+main {
+  width: 100vw;
+  background-image: linear-gradient(rgba(245, 230, 20, 0.9), rgba(245, 230, 20, 0.1));
+  text-align: center;
+  justify-content: center;
+ display: flex;
+}
+
+.flex-container {
+    background-color: white;  height: 80vh;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: orange;
+  font-family: 'Nerko One';
+
+}
+
+input {
+  padding: 0.5rem;
+}
+
+#addValue {
+  box-sizing: border-box;
+  height: 50px;
+  width: 170px;
+  border: none;
+  font-size: 1.7rem;
+  text-align: center;
+
+}
+
+button {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  padding: 0;
+  margin: 0;
+  color: orange;
+  border: solid 4px orange;
+  text-align: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(245, 230, 20, 0.9), rgba(245, 230, 20, 0.1));
+  box-shadow: 5px 4px orange;
+  cursor: pointer;
+
+
+}
+
+button:active {
+transform: translateX(2px), translateY(2px);
+
+
+}
+
+.icon { 
+  font-family: 'Material Symbols Outlined';
+  font-weight: 900;
+  text-shadow: 2px 2px black;  
+  font-size: 4rem;
+
+}
+
+.icon:active {
+  transform: scale(0.8) translate(2px,2px);
+  text-shadow:none;
+
+}
+
+.box {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  border: solid 4px orange;
+  border-radius: 50px;
+  padding-left: 20px;
+}
