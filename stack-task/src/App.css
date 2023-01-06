@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
+:root {
+
+  --darkpink: rgb(247, 111, 154);
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -12,7 +17,7 @@
 .title-container {
   width: 600px;
   border-radius: 50%;
-  background-color: rgb(247, 111, 154);
+  background-color: var(--darkpink);
   opacity: 0.5;
   text-align: center;
   height: 150px;
@@ -50,7 +55,7 @@ button:active {
 }
 
 #pop {
-  background-color: rgb(247, 111, 154);
+  background-color: var(--darkpink);
 }
 
 #push {
@@ -70,10 +75,10 @@ h3 {
 }
 
 table {
-  border: 2px solid rgb(247, 111, 154);
+  border: 2px solid var(--darkpink);
+  box-shadow: 0 0 4px var(--darkpink);
   border-radius: 20px;
   padding: 0.5rem;
-  box-shadow: 0 0 4px rgb(247, 111, 154);
   min-height: 70px;
   min-width: 400px;
 }
@@ -82,7 +87,7 @@ td {
 
   padding: 0.3rem;
   font-size: 1.2rem;
-  color: rgb(247, 111, 154);
+  color: var(--darkpink);
   font-weight: 800;
 
 }

@@ -6,13 +6,9 @@ import './App.css';
 const App = () => {
 
   const [randoms, setRandoms] = useState([]);
-  const [number, setNumber] = useState(null);
   const [stack, setStack] = useState([]);
 
-
-  let stackArray = [];
   let randomArray = [];
-
 
   const newArray = () => {
     randomArray = [];
@@ -21,33 +17,25 @@ const App = () => {
       randomArray.push(newNumber);
     }
     setRandoms(randomArray);
-    console.log(randoms);
-    setNumber(randoms[-1]);
-    console.log(number);
   }
 
   function pushToStack() {
-    stackArray.push(number);
-    randomArray.pop();
-    setRandoms(randomArray);
-    setNumber(randoms[-1]);
+    let number = randoms.pop()
+    console.log(number);
+    let stackArray = [...stack, number];
     setStack(stackArray);
+
   }
 
   function popFromStack() {
-    if (stack.length === 0) {
-      return null;
-    }
-    else {
-      console.log('stack', stack);
-      stackArray.pop();
-      setStack(stackArray);
-
-    }
 
   }
-  return (
 
+
+
+
+
+  return (
     <div className="App" >
       <header><div className="title-container"><h1>Stack App</h1></div></header>
       <main className="container">
