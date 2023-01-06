@@ -1,34 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import DisplayArray from './components/DisplayArray';
 
 function App() {
 
-  /*   const [randoms, setRandoms] = useState([]); */
-
-  const [data, setData] = useState([]);
+  //const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [queue, setQueue] = useState({ first: null, last: null, size: 0 });
+  const [queuedPokemons, setQueuedPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
 
 
-  /*   let randomArray = [];
-  
-    const newArray = () => {
-      randomArray = [];
-      for (let i = 0; i < 10; i++) {
-        let newNumber = Math.floor(Math.random() * 100);
-        randomArray.push(newNumber);
-      }
-      setRandoms(randomArray);
-    } */
-  /*  class Queue {
-     constructor(first, last, size) {
-       this.first = null;
-       this.last = null;
-       this.size = 0;
-     }
-   } */
+  //const nodeValues = [];
 
   class Node {
     constructor(value) {
@@ -38,52 +21,52 @@ function App() {
   }
 
   const enQueue = (e) => {
-    console.log(e.target.id);
     let node = new Node(e.target.id);
-    console.log(node);
+    //nodeValues.push(e.target.id);
+    setQueuedPokemons([...queuedPokemons, node.value]);
+    console.log('updated queuedPokemons', queuedPokemons);
 
-    if (queue.length === 0) {
-      setQueue(...queue, ...{
-        first: e.target.key,
-        last: e.target.key,
+    if (queue.size === 0) {
+      console.log('detecting zero queue size');
+      setQueue({
+        ...queue,
+        first: node,
+        last: node,
         size: 1
-      })
-      console.log(queue);
-
+      });
+      return;
     }
     else {
+      console.log('non-zero queue size:', queue.size);
       let currentLast = queue.last;
-      console.log(currentLast);
-      currentLast.next = e.target.key;
-      setQueue(...queue, ...{
-        last: e.target.key,
-        size: this.size++
-      })
+      let size = queue.size;
+      currentLast.next = node;
+      setQueue({
+        ...queue,
+        last: node,
+        size: size + 1
+      });
+    }
+  }
+
+  const deQueue = () => {
+    if (!queue.first) {
+      return null;
+    }
+    let first = queue.first;
+    if (first === queue.last) {
+      setQueue({ ...queue, first: null, last: null, size: 0 })
+    }
+    else {
+      let first = queue.first;
+      let size = queue.size;
+      setQueue({ ...queue, first: first.next, size: size - 1 });
       console.log(queue);
+      setQueuedPokemons(queue);
+      return first;
 
     }
   }
-  /* 
-  use push() and shift()
-    This function accepts some value
-    Create a new node using that value passed to the function
-    If there are no nodes in the queue, set this node to be the first and last property of the queue
-    Otherwise, set the 'next' property on the current queue 'last' to be that node, and then set the 'last' property of the queue to be that node.
-    Increment the size of the queue by 1 */
-
-
-  const deQueue = () => { }
-
-  /*  Removing from the beginning of the Queue!
-  If there is no first property, just return null
-  Store the first property in a variable
-  See if the first is the same as the last (check if there is only 1 node). 
-  If so, set the first and last to be null
-  If there is more than 1 node, set the first property to be the next property of first
-  Decrement the size by 1R
-  eturn the value of the node dequeued */
-
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -96,11 +79,16 @@ function App() {
 
         Promise.all(fetches)
           .then((res) => {
-            setData(res);
+            setPokemons(res);
             setIsLoading(false);
           })
       })
   }, [])
+
+  useEffect(() => {/* filter out the queued pokemons */
+    console.log(queuedPokemons);
+  },
+    [queue]);
 
 
   return (
@@ -109,26 +97,19 @@ function App() {
       {isLoading ? <p>Still loading...</p> :
 
         <main>
-
-
           <div>
 
-            {data.map((item) => (
+            {pokemons.map((item) => (
               <img id={item.order} onClick={(e) => enQueue(e)} src={item.sprites.other['official-artwork'].front_default} alt="pokemon" />))}
-
-            {/*  <button id="getNumbers" onClick={newArray}>Get numbers</button>
-            <DisplayArray array={randoms} /> */}
-
 
           </div>
           <div className='queue-container'>
-            {/*           {queue.map((item) => { return <div className="queue-block"></div> })} */}
+
           </div>
           <div className='button-container'>
-            <button id="enqueue" onClick={enQueue}>Enqueue</button>
+
             <button id="dequeue" onClick={deQueue}>Dequeue</button>
           </div>
-
         </main>
       }
     </div>
