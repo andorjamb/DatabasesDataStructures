@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DisplayArray = ({ array }) => {
-    const cells = array.map((i) => { return <td>{i}</td> })
+    const cells = array.map((i) => { return <td key={i}>{i}</td> })
 
     return (
         <>

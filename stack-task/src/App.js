@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DisplayArray from './components/DisplayArray';
 import './App.css';
 
@@ -39,28 +39,21 @@ const App = () => {
       return null;
     }
     let stackArray = [...stack];
-    console.log(stackArray);
     stackArray.pop();
-    console.log(stackArray);
     setStack(stackArray);
 
   }
-
-
-
-
-
   return (
     <div className="App" >
       <header><div className="title-container"><h1>Stack App</h1></div></header>
-      <main className="container">
-        <div className='button-container'><button id="getNumbers" onClick={newArray}>Get numbers</button></div>
-        <h3>Some random numbers: </h3>
-        <DisplayArray array={randoms} />
-        <h3>The stack:</h3>
+      <main>
+        <div className='button-container'><button id="getNumbers" onClick={newArray}>Get numbers</button>
+          <DisplayArray array={randoms} />
+        </div>
+        <h3>Push numbers to the stack:</h3>
         <DisplayArray array={stack} />
-        <h3>Push a new random number to the stack or remove a number:</h3>
-        <span className="text">{text}</span>
+        <h3>Then pop them!</h3>
+        <div className="text">{text}</div>
         <div className='button-container'> <button id="push" onClick={pushToStack}>Push</button>
           <button id="pop" onClick={popFromStack}>Pop</button></div>
 
