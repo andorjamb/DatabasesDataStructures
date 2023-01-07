@@ -3,7 +3,7 @@
 A simple Queue data structure app, built with React.
 
 Screenshot:
-![screenshot]cd ..(https://github.com/andorjamb/DatabasesDataStructures/blob/master/queue_task/screenshot_queue.png)
+![screenshot](https://github.com/andorjamb/DatabasesDataStructures/blob/master/queue_task/screenshot_queue.png)
 
 #### Enqueue Psuedocode:
     This function accepts some value
