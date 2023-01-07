@@ -2,18 +2,10 @@
 
 A simple Queue data structure app, built with React.
 
+Screenshot:
+![screenshot](https://github.com/andorjamb/DatabasesDataStructures/queue_task/blob/master/screenshot_queue.png)
 
-
-/**optional additions if time:
- * animate little divs as they dequeue
- * button styling
- * snake mode - enqueue and dequeue at same time
- */
-
-
-
-   
- #### Enqueue Psuedocode:
+#### Enqueue Psuedocode:
     This function accepts some value
     Create a new node using that value passed to the function
     If there are no nodes in the queue, set this node to be the first and last property of the queue
@@ -32,25 +24,3 @@ A simple Queue data structure app, built with React.
   If there is more than 1 node, set the queue 'first' property to be the 'next' property of first node
   Decrement the queue size by 1
   Return the value of the node dequeued 
-
-
-       //const [nodeValues, setnodeValues] = useState([]);
-           //setnodeValues([...nodeValues, node.value]);
-     //splice(start, deletecount)
-    /*   useEffect(() => {
-  
-      const queuingPokes = pokemons.filter((item) => nodeValues.includes(item.id.toString()));
-      setQueueDisplay(queuingPokes);
-      console.log(queueDisplay);
-  
-    }, [nodeValues]) */
-
-      /* 
-        const queued = pokemons.filter((item) => item.id.toString() == e.target.id);
-        setQueueDisplay(...queueDisplay, queued);
-    
-       const queued = pokemons.filter((item) => nodeValues.includes(item.id.toString()));
-        console.log(queueDisplay);
-    
-        const updatedPokemons = pokemons.filter((item) => item.id != (e.target.id));
-        setPokemons(updatedPokemons); */
