@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Queue = ({ pokemons }) => {
 
     return (
-        <div className="queue">
+        <div>
             {pokemons.map((item) => (
                 <img id={item.id} key={item.id} src={item.sprites.other['official-artwork'].front_default} alt="pokemon" />))}
         </div>

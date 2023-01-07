@@ -23,13 +23,8 @@ function App() {
 
     let pokemonsList = pokemons;
     let queuedPokes = pokemonsList.splice(e.target.id - 1, 1);
-    console.log(queuedPokes);
     setPokemons(pokemonsList);
-    console.log(pokemons);
-    console.log(queueDisplay);
     setQueueDisplay([...queueDisplay, queuedPokes[0]])
-    console.log(queueDisplay);
-
 
     if (queue.size === 0) {
       setQueue({
@@ -59,7 +54,7 @@ function App() {
     let first = queue.first;
     if (first === queue.last) {
       setQueue({ ...queue, first: null, last: null, size: 0 });
-      setQueueDisplay();
+      setQueueDisplay({});
       return;
     }
     else {
@@ -67,9 +62,9 @@ function App() {
       let size = queue.size;
       setQueue({ ...queue, first: first.next, size: size - 1 });
       let queuedPokes = queueDisplay;
-      console.log(queuedPokes);
 
-      console.log(first.value);
+      let newList = queuedPokes.filter((item) => item.id != first.value);
+      setQueueDisplay(newList);
       return first;
 
     }
@@ -99,7 +94,7 @@ function App() {
       {isLoading ? <p>Still loading...</p> :
 
         <main>
-          <p>Click on a pokemon to add it to the queue. </p>
+          <h3>Click on a pokemon to add it to the queue. </h3>
           <div>
 
             {pokemons.map((item) => (
@@ -107,6 +102,7 @@ function App() {
 
           </div>
           <div className='queue-container'>
+            <Queue pokemons={queueDisplay} />
 
             {/*          <div>   {queueDisplay.map((item) => (
               <img id={item.id} key={item.id} src={item.sprites.other['official-artwork'].front_default} alt="pokemon" />))}</div> */}
