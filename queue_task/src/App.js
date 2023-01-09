@@ -10,6 +10,7 @@ function App() {
   const [queue, setQueue] = useState({ first: null, last: null, size: 0 });
   const [pokemons, setPokemons] = useState([]);
   const [queueDisplay, setQueueDisplay] = useState([]);
+  const [activeButton, setActiveButton] = useState(true);
 
   class Node {
     constructor(value) {
@@ -20,11 +21,17 @@ function App() {
 
   const enQueue = (e) => {
     let node = new Node(e.target.id);
+    console.log(e.target.id);
+    console.log(node);
+    setActiveButton(true);
+ 
 
     let pokemonsList = pokemons;
-    let queuedPokes = pokemonsList.splice(e.target.id - 1, 1);
+    let i = pokemonsList.findIndex((pokemon) => pokemon.id == e.target.id);
+    let pokeJoiningQueue = pokemonsList.splice(i, 1);
     setPokemons(pokemonsList);
-    setQueueDisplay([...queueDisplay, queuedPokes[0]])
+    setQueueDisplay([...queueDisplay, pokeJoiningQueue[0]])
+
 
     if (queue.size === 0) {
       setQueue({
@@ -51,6 +58,10 @@ function App() {
     if (queue.first == null) {
       return null;
     }
+    if (queue.size === 0) {
+      setActiveButton(false);
+      return null;
+    }
     let first = queue.first;
     if (first === queue.last) {
       setQueue({ ...queue, first: null, last: null, size: 0 });
@@ -61,9 +72,9 @@ function App() {
       let first = queue.first;
       let size = queue.size;
       setQueue({ ...queue, first: first.next, size: size - 1 });
-      let queuedPokes = queueDisplay;
+      let pokeJoiningQueue = queueDisplay;
 
-      let newList = queuedPokes.filter((item) => item.id != first.value);
+      let newList = pokeJoiningQueue.filter((item) => item.id != first.value);
       setQueueDisplay(newList);
       return first;
 
@@ -96,7 +107,6 @@ function App() {
         <main>
           <h3>Click on a pokemon to add it to the queue. </h3>
           <div>
-
             {pokemons.map((item) => (
               <img id={item.id} key={item.id} onClick={(e) => enQueue(e)} src={item.sprites.other['official-artwork'].front_default} alt="pokemon" />))}
 
@@ -104,12 +114,11 @@ function App() {
           <div className='queue-container'>
             <Queue pokemons={queueDisplay} />
 
-            {/*          <div>   {queueDisplay.map((item) => (
-              <img id={item.id} key={item.id} src={item.sprites.other['official-artwork'].front_default} alt="pokemon" />))}</div> */}
           </div>
           <div className='button-container'>
 
-            <button id="dequeue" onClick={deQueue}>Dequeue</button>
+            <button id="dequeue" onClick={deQueue} className={
+              activeButton ? 'active' : 'inActive'}>Dequeue</button>
           </div>
         </main>
       }

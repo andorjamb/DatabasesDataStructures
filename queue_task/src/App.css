@@ -58,7 +58,7 @@ main {
   margin-top: 0;
 }
 
-button {
+button.active {
   height: 120px;
   width: 120px;
   border-radius: 50%;
@@ -72,6 +72,11 @@ button {
   text-shadow: 0px 1px black, -1px 0 white;
   background: linear-gradient(rgb(96, 95, 95), lightgray, rgb(120, 119, 119));
 
+}
+
+button.inActive {
+  box-shadow: inset 1px 2px 3px rgba(109, 6, 6, 0.8);
+  pointer-events: none;
 }
 
 button:active {
