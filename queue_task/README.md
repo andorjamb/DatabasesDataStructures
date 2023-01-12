@@ -2,6 +2,13 @@
 
 A simple Queue data structure app, built with React.
 
+
+## Live Deploy:
+
+Currently deployed here: [Netlify](https://queue-task-bch.netlify.app/)
+
+
+## Screenshot Sample:
 Screenshot:
 ![screenshot](https://github.com/andorjamb/DatabasesDataStructures/blob/master/queue_task/screenshot_queue.png)
 
